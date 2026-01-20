@@ -1,7 +1,6 @@
 import numpy as np
 import os
 import itertools
-import gymnax
 import jax
 import jax.numpy as jnp
 import equinox as eqx # Standard for JAX NNs
