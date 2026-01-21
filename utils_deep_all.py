@@ -438,9 +438,9 @@ def deep_deterministic_fictitious_play_sampling(
         new_br_model, br_loss_hist,_ = train_sampling_BR_buffer(
             env, target_mu = mu, iterations=iterations_br, lr=lr, key = model_key,tau=tau, batch_size=batch_size
         )
-        plt.plot(br_loss_hist)
-        plt.yscale('log')
-        plt.show()
+        #plt.plot(br_loss_hist)
+        #plt.yscale('log')
+        #plt.show()
         # 4. Evaluate Exploitability
         # Get action probs for just the NEW Best Response
         br_probs = get_action_probs_from_jax_model(new_br_model, env)
