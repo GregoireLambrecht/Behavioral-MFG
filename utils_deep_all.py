@@ -381,15 +381,8 @@ def train_sampling_BR_buffer(env, target_mu, iterations=1000, batch_size = 100, 
 
 
 
-def save_run(save_dir, run_name, models_pool, idxs, metrics):
+def save_run(save_dir, run_name, metrics):
     os.makedirs(save_dir, exist_ok=True)
-
-    # 1. Save models (JAX pytrees → pickle is OK)
-    with open(os.path.join(save_dir, f"{run_name}_models.pkl"), "wb") as f:
-        pickle.dump(models_pool, f)
-
-    # 2. Save idxs separately (lightweight)
-    np.save(os.path.join(save_dir, f"{run_name}_idxs.npy"), np.array(idxs))
 
     # 3. Save metrics separately (inspect without models)
     with open(os.path.join(save_dir, f"{run_name}_metrics.pkl"), "wb") as f:
@@ -478,8 +471,6 @@ def deep_deterministic_fictitious_play_sampling(
         save_run(
             save_dir=save_dir,
             run_name=run_name,
-            models_pool=models_pool,
-            idxs=idxs,
             metrics=metrics,
         )
 
